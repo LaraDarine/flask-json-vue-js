@@ -7,14 +7,30 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def weather():
-    # Additionally, we're now loading the JSON file's data into file_data
-    # every time a request is made to this endpoint
+    # Create an empty list
+    data = []
+    # open the json file
+    with open('./data.json', 'r') as jsonfile:
+            data.append(json.load(jsonfile))
+    
     if request.method == "POST":
-        data = request.json
-        print(data)
+        # get new data from the html form element
+        name = request.form['name']
+        model = request.form['model']
+        new_data = {
+            'name': name,
+            'model': model
+        }
+        # add it to the list
+        data.append(new_data)
+        # write the updates to the json file
+        with open('./data.json', 'w') as outjsonfile:
+            json.dump(data, outjsonfile)
+        return render_template('add_article.html', data=data)
+        
 
     if request.method == "GET":
-        return render_template('add_article.html')
+        return render_template('add_article.html', data=data)
 
 
     '''

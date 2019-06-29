@@ -4,7 +4,7 @@
      <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/vue.js') }}"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet">
 
     <title>Add Article | MyBlog</title>
@@ -16,7 +16,7 @@
         <h2>New Article</h2>
 </header>
 <main id="add-section">
-<form id="form" @submit="save()" action="{{url_for('weather')}}" method="POST" >
+<form id="form" action="{{url_for('weather')}}" method="POST" >
     <div>
         <div>{{ses}}</div>
         
@@ -29,7 +29,12 @@
         <input type="submit" name="Create">
     </div>
 </form>
+<div>
+    {% for entry in data  %}
+        <div>{{ entry.name }} - {{ entry.model }}</div>
+    {% endfor %}
+</div>
 </main>
-<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>
