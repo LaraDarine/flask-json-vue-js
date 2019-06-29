@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="js/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet">
+
+    <title>Add Article | MyBlog</title>
+</head>
+<body>
+
+<header>
+        <h1><a href="/">MyBlog</a></h1>
+        <h2>New Article</h2>
+</header>
+<main id="add-section">
+<form id="form" @submit="save()" action="{{url_for('weather')}}" method="POST" >
+    <div>
+        <div>{{ses}}</div>
+        
+        <label>Name:</label>
+        <input type="text" name="name" value="">
+
+        <label>model:</label>
+        <input type="text" name="model" value="">
+  
+        <input type="submit" name="Create">
+    </div>
+</form>
+</main>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
